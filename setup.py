@@ -37,13 +37,13 @@ setup(
         'console_scripts': [
         ],
     },
-    license="GNU General Public License v3",
+    license="GNU Lesser General Public License v2.1",
     zip_safe=False,
     keywords='gpio',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'License :: OSI Approved :: GNU Lesser General Public License v2.1',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7',
