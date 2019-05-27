@@ -271,8 +271,8 @@ class GPIO(object):
             self.lib = GPIO.load_lib()
 
         self.chip = self.lib.gpiod_chip_open_by_number(chip)
-        self.line = self.lib.gpiod_chip_get_line(chip, pin)
-        self.name = str(pin)
+        self.line = self.lib.gpiod_chip_get_line(self.chip, pin)
+        self.name = 'io{}'.format(pin).encode()
 
         if direction:
             self.lib.gpiod_line_request_output(self.line, self.name, default_output)
