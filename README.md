@@ -13,6 +13,15 @@ data structures behind a straightforward API.
 
 from [kernel.org](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about/)
 
+## Requirements
++ libgpiod1
+
+## Install
+```
+sudo apt install libgpiod1
+pip install gpio-next
+```
+
 
 ## Usage
 ```python
@@ -23,5 +32,6 @@ LED = GPIO(12, direction=1)
 for i in range(10):
     LED.write(i & 1)
     time.sleep(1)
+```
 
 

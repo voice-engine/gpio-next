@@ -23,7 +23,7 @@ test_requirements = [
 
 setup(
     name='gpio-next',
-    version='0.0.1',
+    version='0.0.2',
     description="libgpiod python ctypes binding",
     long_description=long_description,
     long_description_content_type='text/markdown',
