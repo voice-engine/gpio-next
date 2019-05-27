@@ -1,5 +1,7 @@
 GPIO NEXT
 =========
+[![](https://img.shields.io/pypi/v/gpio-next.svg)](https://pypi.org/project/gpio-next/)
+
 
 This is a python ctypes binding for [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about/).
 
