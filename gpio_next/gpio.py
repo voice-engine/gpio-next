@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 
-from ctypes import cdll, c_int, c_uint, c_long, c_char_p, c_void_p, Structure, POINTER
+from ctypes import cdll, c_int, c_uint, c_long, c_char_p, c_void_p, Structure, POINTER, pointer
 import time
 
 
@@ -294,11 +294,11 @@ class GPIO(object):
 
     def event_wait(self, timeout=10):
         t = timespec(tv_sec=timeout, tv_nsec=0)
-        return self.lib.gpiod_line_event_wait(self.line, POINTER(t))
+        return self.lib.gpiod_line_event_wait(self.line, pointer(t))
 
     def event_read(self):
         event = gpiod_line_event()
-        self.lib.gpiod_line_event_read(self.line, POINTER(event))
+        self.lib.gpiod_line_event_read(self.line, pointer(event))
 
         return event.event_type, event.ts.tv_sec
 
