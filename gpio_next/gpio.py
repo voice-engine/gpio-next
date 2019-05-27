@@ -266,17 +266,18 @@ class GPIO(object):
         return lib
 
     
-    def __init__(self, pin, direction=0, chip=0):
+    def __init__(self, pin, direction=0, chip=0, default_output=0):
         if self.lib is None:
             self.lib = GPIO.load_lib()
 
         self.chip = self.lib.gpiod_chip_open_by_number(chip)
         self.line = self.lib.gpiod_chip_get_line(chip, pin)
+        self.name = str(pin)
 
         if direction:
-            self.lib.gpiod_line_request_output(self.line, str(pin), 1)
+            self.lib.gpiod_line_request_output(self.line, self.name, default_output)
         else:
-            self.lib.gpiod_line_request_input(self.line, str(pin))
+            self.lib.gpiod_line_request_input(self.line, self.name)
 
 
     def __call__(self):
@@ -288,14 +289,18 @@ class GPIO(object):
     def read(self):
         return self.lib.gpiod_line_get_value(self.line)
 
-    def wait(self):
-        # t = timespec(tv_sec=0, tv_nsec=0)
-        # result = lib.gpiod_line_event_wait(button, POINTER(t))
+    def event_enable(self, edge='both'):
+        self.lib.gpiod_line_request_both_edges_events(self.line, self.name)
 
+    def event_wait(self, timeout=10):
+        t = timespec(tv_sec=timeout, tv_nsec=0)
+        return self.lib.gpiod_line_event_wait(self.line, POINTER(t))
+
+    def event_read(self):
         event = gpiod_line_event()
         self.lib.gpiod_line_event_read(self.line, POINTER(event))
 
-        return event.event_type
+        return event.event_type, event.ts.tv_sec
 
 
 # button = lib.gpiod_chip_get_line(chip, 32 * 6 + 11)
