@@ -1,3 +1,3 @@
 # -*- coding:utf-8 -*-
 
-from .gpio import GPIO
+from .gpio import Input, Output

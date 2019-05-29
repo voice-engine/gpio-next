@@ -24,14 +24,26 @@ pip install gpio-next
 
 
 ## Usage
+1. turn on/off an LED
+
 ```python
 import time
-from gpio_next import GPIO
+from gpio_next import Output
 
-LED = GPIO(12, direction=1)
+LED = Output(64, default_value=0)
 for i in range(10):
     LED.write(i & 1)
     time.sleep(1)
 ```
 
+2. detect button events
 
+```python
+from gpio_next import Input
+
+button = Input(203)
+
+for i in range(10):
+    print(button.wait())
+    print(button.read())
+```
