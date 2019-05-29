@@ -23,7 +23,7 @@ test_requirements = [
 
 setup(
     name='gpio-next',
-    version='0.0.2',
+    version='0.0.3',
     description="libgpiod python ctypes binding",
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -37,13 +37,13 @@ setup(
         'console_scripts': [
         ],
     },
-    license="GNU Lesser General Public License v2.1",
+    license='LGPLV2',
     zip_safe=False,
     keywords='gpio',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU Lesser General Public License v2.1',
+        'License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7',
